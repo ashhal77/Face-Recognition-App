@@ -1,0 +1,32 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Models & Large files
+*.pkl
+*.joblib
+*.h5
+
+# Environment files
+environment.yml
+*.env
+
+# Virtual environments
+venv/
+env/
+face_rec/
+.env
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
