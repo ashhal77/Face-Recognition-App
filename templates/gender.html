@@ -33,7 +33,7 @@
                     <h3>Predicted Image</h3>
                     <img src="/static/predict/{{ pred_image }}?v={{ timestamp }}" 
                          class="img-fluid w-100" alt="Predicted Image" 
-                         style="border: 2px solid #ddd; border-radius: 10px;">
+                         style="max-width: 100%; border: 2px solid #ddd; border-radius: 10px;">
                 </div>
 
                 {% if eigen_images %}
@@ -43,7 +43,7 @@
                     <div class="mb-4">
                         <img src="/static/predict/{{ eigen }}?v={{ timestamp }}" 
                              class="img-fluid w-100" alt="Eigen Face {{ loop.index }}" 
-                             style="border: 2px solid #ddd; border-radius: 10px;">
+                             style="max-width: 100%; border: 2px solid #ddd; border-radius: 10px;">
                         <p><small>Eigen Face {{ loop.index }}</small></p>
                     </div>
                     {% endfor %}
