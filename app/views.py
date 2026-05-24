@@ -25,17 +25,21 @@ def genderapp():
         filename = f.filename
         path = os.path.join(UPLOAD_FOLDER, filename)
         f.save(path)
+      
+        pred_image, predictions, eigen_images = pipeline_model(path)
        
-        pred_image, predictions = pipeline_model(path)
-        
         timestamp = int(time.time())
         pred_filename = "Prediction_Image.jpg"
         cv2.imwrite(os.path.join(PREDICT_FOLDER, pred_filename), pred_image)
-        
-        return render_template('gender.html', 
-                             fileupload=True, 
+       
+        # Debug print
+        print(f"🔄 Passing to template → eigen_images: {eigen_images}")
+       
+        return render_template('gender.html',
+                             fileupload=True,
                              pred_image=pred_filename,
+                             eigen_images=eigen_images,
                              timestamp=timestamp,
-                             predictions=predictions)   # ← This was missing!
-    
+                             predictions=predictions)
+   
     return render_template('gender.html', fileupload=False)

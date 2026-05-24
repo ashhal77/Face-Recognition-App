@@ -18,13 +18,7 @@
 
             {% if fileupload %}
             <br><br>
-            <h3>Predicted Image</h3>
-            <img src="/static/predict/{{ pred_image }}?v={{ timestamp }}" 
-                 class="img-fluid" alt="Predicted Image" width="550" style="border: 2px solid #ddd; border-radius: 10px;">
-
-            <!-- Clean Result Below Image -->
             {% if predictions %}
-            <br><br>
             <h4>Prediction Result</h4>
             {% for pred in predictions %}
             <div class="alert alert-success" style="font-size: 1.2rem;">
@@ -33,6 +27,29 @@
             </div>
             {% endfor %}
             {% endif %}
+
+            <div class="row g-3">
+                <div class="{{ 'col-md-6' if eigen_images else 'col-12' }}">
+                    <h3>Predicted Image</h3>
+                    <img src="/static/predict/{{ pred_image }}?v={{ timestamp }}" 
+                         class="img-fluid w-100" alt="Predicted Image" 
+                         style="border: 2px solid #ddd; border-radius: 10px;">
+                </div>
+
+                {% if eigen_images %}
+                <div class="col-md-6">
+                    <h3>Eigen Face Representation</h3>
+                    {% for eigen in eigen_images %}
+                    <div class="mb-4">
+                        <img src="/static/predict/{{ eigen }}?v={{ timestamp }}" 
+                             class="img-fluid w-100" alt="Eigen Face {{ loop.index }}" 
+                             style="border: 2px solid #ddd; border-radius: 10px;">
+                        <p><small>Eigen Face {{ loop.index }}</small></p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
 
             {% endif %}
         </div>
